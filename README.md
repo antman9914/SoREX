@@ -1,6 +1,6 @@
 # SoREX: Towards Self-Explainable Social Recommendation with Relevant Ego-Path Extraction
 
-This is the code for our paper submitted to TKDE.
+This is the code for our paper submitted to TKDE, which is implemented in PyTorch 1.10.2 and PyTorch-Geometric 2.2.0. 
 
 ## Datasets
 

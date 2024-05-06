@@ -12,12 +12,12 @@ from torch_geometric.nn.conv.gcn_conv import gcn_norm
 from torch_geometric.typing import OptPairTensor, Adj, Size, OptTensor
 
 class SoREX(torch.nn.Module):
-    def __init__(self, in_channels, soc_mp_num, co_mp_num, K, num_total, num_user):
+    def __init__(self, in_channels, soc_mp_num, co_mp_num, num_total, num_user):
         super(SoREX, self).__init__()
         self.in_channels, self.num_total = in_channels, num_total
         self.soc_gcn = LGCN(self.in_channels, soc_mp_num)
         self.co_gcn = LGCN(self.in_channels, co_mp_num, option="sym")
-        self.K = K
+        # self.K = K
         self.num_user = num_user
         self.id_emb = Parameter(torch.nn.init.xavier_normal_(torch.empty((num_total, in_channels))))
         self.soc_id_emb = Parameter(torch.nn.init.xavier_normal_(torch.empty(num_total, in_channels)))

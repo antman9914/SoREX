@@ -63,7 +63,6 @@ logging.info("Running Mode: %s" % args.mode)
 logging.info("------HyperParameter Settings------")
 logging.info("Social Diffusion Layers: %d" % args.soc_mp_layer)
 logging.info("Co-Purchase Diffusion Layers: %d" % args.co_mp_layer)
-logging.info("Number of selected neighbors: %d" % args.K)
 logging.info("Number of sampled walks: %d" % args.num_walk)
 logging.info("Length of sampled walks: %d" % args.num_hop)
 logging.info("ID Embedding Dimension: %d" % args.input_dim)
@@ -154,7 +153,7 @@ test_loader = SRLoader(test_patch, test_graph4walk, args.num_walk, args.num_hop,
 
 logging.info("Training set size: %d; Val set size: %d; Test set size: %d" % (t_loader.dataset.size(0), v_loader.dataset.size(0), test_loader.dataset.size(0)))
 
-model = SoREX(args.input_dim, args.soc_mp_layer, args.co_mp_layer, args.K, num_total, num_user)
+model = SoREX(args.input_dim, args.soc_mp_layer, args.co_mp_layer, num_total, num_user)
 model = model.to(device)
 if args.mode == 'train':
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
